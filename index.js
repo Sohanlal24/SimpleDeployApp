@@ -4,7 +4,10 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 3001;
 
-// Gibberish cloud data for demo/screenshots
+// Serve static files from the 'public' folder
+app.use(express.static('public'));
+
+// demo/screenshots
 const gibberishData = [
     { id: 1, name: "FlibberCloud", status: "Blorp" },
     { id: 2, name: "ZorboStorage", status: "Wibble" },
@@ -29,7 +32,7 @@ app.get('/CreativeApp2', (req, res) => {
     res.send('<h2>Creative App 2</h2>');
 });
 
-// Gibberish Cloud Info Route
+// Route
 app.get('/cloud-info', (req, res) => {
     let html = '<h1>Cloud Data (Demo)</h1><ul>';
     gibberishData.forEach(item => {
@@ -40,5 +43,8 @@ app.get('/cloud-info', (req, res) => {
 });
 
 app.listen(port, () => {
+    console.log(`CreativeApp listening on port ${port}`);
+});
+
     console.log(`CreativeApp listening on port ${port}`);
 });
